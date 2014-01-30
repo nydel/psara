@@ -1,4 +1,10 @@
 #S(CL-PSARA::LOG-ENTRY
+   :TIMESTAMP 3600066486
+   :SUBJECT "on github for real"
+   :AUTHOR "nydel"
+   :CONTENT "now we've a repository on github at https://github.com/miercoledi/psara and there will be much more to follow later. now is time for a break."
+   :TAGS ("github" "git" "hub"))
+#S(CL-PSARA::LOG-ENTRY
    :TIMESTAMP 3600048178
    :SUBJECT "need for pannel"
    :AUTHOR "nydel"

@@ -87,17 +87,25 @@
      (:body
       (:div :class "mainContainer"
 	    (:div :class "topContainer"
-		  (:img
-		   :src "http://www.isismelting.com/psara001.png"
-		   :id "psaralogo"))
+;		  (:div :class "loginContainer"
+;;
+;; a remodel of the login form such that if logged-in-p it's a short wide mini control panel
+;; and if you're not logged in it's a short wide mini login form with a link to registration
+;;
+;
+		  (:a :href "/weblog"
+		      (:img
+		       :src "http://www.isismelting.com/psara001.png"
+		       :id "psaralogo")))
 	    (:div :class "topBar"
 		  (:p :class "topBar"
 		      "psara on github: "
-		      (:a :href "#" "http://whatever.github.com/psara/etc")))
+		      (:a :href "https://github.com/miercoledi/psara.git"
+			  "https://github.com/miercoledi/psara.git")))
 	    (:hr :class "thinline")
 	    (mapcar (lambda (y)
 		      (format-log-entry-for-display y))
-		    *log-entry-db*))))))
+		    (subseq *log-entry-db* 0 8)))))))
 
 (defun init-weblog-style ()
   (hunchentoot:define-easy-handler (weblogcss :uri "/weblog.css") ()
@@ -126,7 +134,9 @@
 			    :width "100px"
 			    :border "solid #DDDDDD 1px"
 			    :border-radius "25px 50px 25px 50px"
-			    :margin-left "250px"))
+			    :margin-left "auto"
+			    :margin-right "auto"
+			    :display "block"))
 			  ((".topContainer")
 			   (:width "100%"))
 			  ((".logentrytitle")
