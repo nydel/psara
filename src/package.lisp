@@ -4,9 +4,13 @@
   (:nicknames :psara :ps)
   (:use :common-lisp)
   (:export 
-           :*master-acceptor*
+         
+           :+init-all+ 
+
+	   :*master-acceptor*
 	   :+init+
-	   
+	   :+stop+
+
 	   :page
 	   :test-page
 

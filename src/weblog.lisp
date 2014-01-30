@@ -16,7 +16,7 @@
 
 (defvar *log-entry-db* '())
 
-(defvar *log-entry-db-path* (pathname ".weblog.db"))
+(defvar *log-entry-db-path* (pathname "data/.weblog.db"))
 
 (defun write-entries ()
   (with-open-file (@db *log-entry-db-path*
@@ -77,6 +77,7 @@
 				      (:a :class "logtag" :href "#" y)))
 				   (log-entry-tags entry))))))))
 
+
 (defun init-weblog-display ()
   (page weblog "/weblog" "text/html" ()
     (markup:html
@@ -123,9 +124,18 @@
 			  (("#psaralogo")
 			   (:height "100px"
 			    :width "100px"
+			    :border "solid #DDDDDD 1px"
+			    :border-radius "25px 50px 25px 50px"
 			    :margin-left "250px"))
 			  ((".topContainer")
 			   (:width "100%"))
+			  ((".logentrytitle")
+			   (:background "#EEEEEE"
+			    :border-radius "25px 25px 25px 25px"))
+			  ((".logentrytags")
+			   (:background "#DDDDDD"
+			    :border-radius "25px 25px 25px 25px"
+			    :text-align "right"))
 			  (("hr.thinline")
 			   (:border "solid 1px #000000"
 			    :border-top "0"
@@ -166,18 +176,21 @@
 		      :enctype "application/x-www-form-urlencoded"
 		      :name "logentryform"
 		      (:p
-		       (:input :type "text"
+		       (:p
+			(:input :type "text"
 			       :name "subject"
 			       :placeholder "subject"
-			       :id "subject")
-		       (:textarea :name "content"
-				  :placeholder "write entry here..."
-				  :id "content" "")
-		       (:input :type "text"
-			       :name "tags"
-			       :placeholder "separate tags by a space"
-			       :id "tags")
-		       (:input :type "submit")))))))))
+			       :id "subject"))
+		       (:p
+			(:textarea :name "content"
+				   :placeholder "write entry here..."
+				   :id "content" ""))
+		       (:p
+			(:input :type "text"
+				:name "tags"
+				:placeholder "separate tags by a space"
+				:id "tags")
+			(:input :type "submit"))))))))))
 
 (defun +init-weblog+ ()
   (load-log-entries)

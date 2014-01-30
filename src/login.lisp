@@ -22,7 +22,7 @@
 
 (defvar *users-db* '())
 
-(defvar *users-db-path* (pathname ".login.db"))
+(defvar *users-db-path* (pathname "data/.login.db"))
 
 (defun write-users ()
   (with-open-file (@db *users-db-path*

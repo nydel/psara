@@ -7,11 +7,21 @@
 		:ironclad
 		:local-time))
 
+(defvar *master-port* 9903)
+
 (defvar *master-acceptor* 
-  (make-instance 'hunchentoot:easy-acceptor :port 9903))
+  (make-instance 'hunchentoot:easy-acceptor :port *master-port*))
 
 (defun +init+ ()
   (hunchentoot:start *master-acceptor*))
+
+(defun +init-all+ ()
+  (+init+)
+  (+init-login+)
+  (+init-weblog+))
+
+(defun +stop+ ()
+  (hunchentoot:stop *master-acceptor*))
 
 (defmacro page (name uri type args &body body)
   `(hunchentoot:define-easy-handler (,name :uri ,uri) ,args
