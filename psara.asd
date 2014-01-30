@@ -14,4 +14,8 @@
   :components ((:module "src"
 		:serial t
 		:components ((:file "package")
-			     (:file "psara")))))
+			     (:file "psara")
+			     (:file "login")
+			     (:file "weblog")))))
+
+(in-package :cl-psara)
