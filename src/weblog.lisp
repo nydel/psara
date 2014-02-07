@@ -108,6 +108,35 @@
 		      (format-log-entry-for-display y))
 		    (subseq *log-entry-db* 0 8)))))))
 
+(defun init-weblog-permalink ()
+  "broken, displays the html not-raw...bleh"
+  (hunchentoot:define-easy-handler (weblogpermalink :uri "/weblogpermalink") (id)
+    (setf (hunchentoot:content-type*) "text/html")
+    (let ((entry (car (remove-if-not #'(lambda (y)
+					 (equal (read-from-string id)
+						(log-entry-timestamp y)))
+				     *log-entry-db*))))
+      (format nil "~a"
+	      (markup:html
+	       (:head
+		(:title (log-entry-subject entry))
+		(:link :rel "stylesheet" :type "text/css" :href "/weblog.css"))
+	       (:body
+		(:div :class "mainContainer"
+		      (:div :class "topContainer"
+			    (:a :href "/weblog"
+				(:img
+				 :src "http://www.isismelting.com/psara001.png"
+				 :id "psaralogo")))
+		      (:div :class "topBar"
+			    (:p :class "topBar"
+				"psara on github: "
+				(:a :href "https://github.com/miercoledi/psara.git"
+				    "https://github.com/miercoledi/psara.git")))
+		      (:hr :class "thinline")
+		      
+		      (format-log-entry-for-display entry))))))))
+
 (defun init-weblog-style ()
   (hunchentoot:define-easy-handler (weblogcss :uri "/weblog.css") ()
     (setf (hunchentoot:content-type*) "text/css")
