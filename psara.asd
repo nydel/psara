@@ -1,5 +1,3 @@
-;;; -*- Mode: LISP; Syntax: COMMON-LISP; Package: CL-USER; Base: 10 -*-
-
 (in-package :cl-user)
 
 (defpackage cl-psara-asd
@@ -16,6 +14,8 @@
 		:components ((:file "package")
 			     (:file "psara")
 			     (:file "login")
-			     (:file "weblog")))))
+			     (:file "weblog")
+			     (:file "markup")
+			     (:file "searchlogs")))))
 
 (in-package :cl-psara)
