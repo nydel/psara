@@ -1,4 +1,19 @@
 #S(CL-PSARA::LOG-ENTRY
+   :TIMESTAMP 3600086858
+   :SUBJECT "hunchentoot problems on isismelting vps"
+   :AUTHOR "nydel"
+   :CONTENT "not sure what's going on and too tired to fix it. i think i'm going to call this the end of this session and move on to calming down."
+   :TAGS ("isis" "vps" "psara" "hunchentoot" "lisp"))
+#S(CL-PSARA::LOG-ENTRY
+   :TIMESTAMP 3600081365
+   :SUBJECT "version control"
+   :AUTHOR "nydel"
+   :CONTENT "since we never seem to know what the hell we're building / developing, we've taken this interpretation of our \"psara\" vision that we just built and synced it up with github. it's quite eye-opening and will force us into better version control and blame, especially as more people become involved in the project. it's funny, while using the github, i notice that github itself includes many of the basal archetype w3 systems that psara should contain. in addition to a login, registration, weblog (with discussion) we shall have a separate wiki that is somehow tied to the weblog (they can be so similar) .. so long as they share a markup language (another feature we've to add) it should be easy to make them compatible. also the site must be searchable by tags and by other means.
+
+one gigantic feature we need to begin working on sometime in the near, if not imminent, future is an administration panel. it should be used to configure a new instance of psara, as well as to add, subtract, install, download, upload etc various widgets, addons, features, themes, all-that-jazz that will make up the soon-to-be-beautiful commonlisp w3 setup known as the psara-suite. and sweet will it be indeed."
+   :TAGS ("psara" "suite" "dev" "version" "control" "git" "hub" "github"
+          "features"))
+#S(CL-PSARA::LOG-ENTRY
    :TIMESTAMP 3600066486
    :SUBJECT "on github for real"
    :AUTHOR "nydel"

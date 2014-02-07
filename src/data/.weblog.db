@@ -1,4 +1,22 @@
 #S(CL-PSARA::LOG-ENTRY
+   :TIMESTAMP 3600721118
+   :SUBJECT "round two"
+   :AUTHOR "nydel"
+   :CONTENT "okay it's round two of development on the #psara project. just to be fun, i think i'll start with a little work on a markup language, so things can be [b]bold[/b] and [u]underlined[/u] and the like. also i should work on #hashtags and a general search to justify the existence of tag attachment to posts and for other reasons. in addition we will need what will essentially be a permalink page, though naming it as a permalink is misleading because of the way the internals will work. i don't care about that right now.
+
+there are two newlines before this sentence, the markup ought to turn that into a visible linebreak in the html.
+
+remember we're using the :cl-markup package so we may need to change something such that the results of a (format-this-log-entry) or whatever are printed using (markup::raw) else the post-markup-processing html may not show up. but that's later.
+
+it is a wonderful day to be a programmer and a wonderful day to be a developer on the #psara team."
+   :TAGS ("psara" "team" "dev" "markup"))
+#S(CL-PSARA::LOG-ENTRY
+   :TIMESTAMP 3600086858
+   :SUBJECT "hunchentoot problems on isismelting vps"
+   :AUTHOR "nydel"
+   :CONTENT "not sure what's going on and too tired to fix it. i think i'm going to call this the end of this session and move on to calming down."
+   :TAGS ("isis" "vps" "psara" "hunchentoot" "lisp"))
+#S(CL-PSARA::LOG-ENTRY
    :TIMESTAMP 3600081365
    :SUBJECT "version control"
    :AUTHOR "nydel"

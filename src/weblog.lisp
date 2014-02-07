@@ -70,7 +70,7 @@
 		      (:dt :class "logentrytitle"
 			   (:a :href "#" (log-entry-subject entry))
 			   " by " (:a :href "#" (log-entry-author entry)))
-		      (:dd :class "logentrycontent" (log-entry-content entry))
+		      (:dd :class "logentrycontent" (markup:raw (sloppy-regex-replace (log-entry-content entry))))
 		      (:dt :class "logentrytags" ;;list of items to strings that are links
 			   (mapcar (lambda (y)
 				     (markup:markup
@@ -103,6 +103,7 @@
 		      (:a :href "https://github.com/miercoledi/psara.git"
 			  "https://github.com/miercoledi/psara.git")))
 	    (:hr :class "thinline")
+	    
 	    (mapcar (lambda (y)
 		      (format-log-entry-for-display y))
 		    (subseq *log-entry-db* 0 8)))))))
