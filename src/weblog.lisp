@@ -127,6 +127,11 @@
 		      (format-log-entry-for-display y))
 		    (subseq *log-entry-db* 0 8)))))))
 
+(defun init-weblog-as-index ()
+  (hunchentoot:define-easy-handler (weblogasindex :uri "/") ()
+    (setf (hunchentoot:content-type*) "text/plain")
+    (hunchentoot:redirect "/weblog")))
+
 (defun init-weblog-permalink ()
   "broken, displays the html not-raw...bleh"
   (hunchentoot:define-easy-handler (weblogpermalink :uri "/weblogpermalink") (id)
@@ -374,5 +379,6 @@
   (init-weblog-form)
   (init-weblog-form-go)
   (init-weblog-permalink)
+  (init-weblog-as-index)
   (init-edit-form)
   (init-edit-form-go))

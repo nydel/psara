@@ -1,4 +1,9 @@
 #S(CL-PSARA::COMMENT
+   :ENTRY-TIMESTAMP 3600837354
+   :TIMESTAMP 3600837390
+   :AUTHOR "nydel"
+   :CONTENT "also it seems a good idea to do a push up to github right now")
+#S(CL-PSARA::COMMENT
    :ENTRY-TIMESTAMP 3600796511
    :TIMESTAMP 3600836874
    :AUTHOR "nydel"
