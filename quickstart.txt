@@ -1,0 +1,13 @@
+1. don't bother with the asd file in the project's root; we'll make this package loadable with asdf & asdf-install packages once it takes further shape.
+
+2. have quicklisp installed and running in your instance of commonlisp. we use emacs/slime with sbcl.
+
+3. simply open package.lisp from /src and load it -- it will load all the other .lisp files in the source directory. it will also load a number of integral packages to your REPL using quicklisp. we are heavily-dependent on :HUNCHENTOOT as well as :CL-MARKUP, :CL-PPCRE, :CSS-LITE and a number of other common systems. see the source code for a full list of dependencies.
+
+4. once the package is loaded without error, run the function, from the package :CL-PSARA, nicknamed :PS, (ps:+start+) -- this will start the web server and the psara application on port 9903 by default.
+
+5. to stop, evaluate the form (ps:+stop+)
+
+6. there are a host of other functions for initialization of specific parts of the system, all the important ones are exported in the system definition, use it as a reference if you plan to develop the project further.
+
+7. thank you for using psara
