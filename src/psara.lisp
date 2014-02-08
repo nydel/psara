@@ -3,6 +3,7 @@
 (ql:quickload '(:cl-markup
 		:cl-ppcre
 		:css-lite
+		:drakma
 		:hunchentoot
 		:ironclad
 		:local-time))
@@ -19,7 +20,8 @@
   (+init+)
   (+init-login+)
   (+init-weblog+)
-  (+init-log-search+))
+  (+init-log-search+)
+  (+init-comment+))
 
 (defun +start+ ()
   (+init-all+))

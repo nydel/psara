@@ -26,12 +26,15 @@
 	   :add-log-entry
 	   :load-log-entries
 
+	   :+init-comment+
+
 	   :+init-log-search+))
 
 (in-package :cl-psara)
 
 
 (load "psara.lisp")
+(load "comments.lisp")
 (load "login.lisp")
 (load "markup.lisp")
 (load "searchlogs.lisp")

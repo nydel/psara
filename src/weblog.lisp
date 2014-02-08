@@ -84,6 +84,9 @@
 				   (log-entry-tags entry)))
 		 (:div :class "thinlongbar"
 		       (:p :class "simple" (markup:raw "&nbsp;")
+			   (:a :href (concatenate 'string "/commentform?id="
+						  (write-to-string (log-entry-timestamp entry))) "reply")
+			   (markup:raw "&nbsp;&nbsp;")
 			   (:a :href (concatenate 'string "/logeditform?id="
 						  (write-to-string (log-entry-timestamp entry))) "edit"))))))))
 
@@ -148,7 +151,15 @@
 				    "https://github.com/miercoledi/psara.git")))
 		      (:hr :class "thinline")
 		      (markup:raw
-		      (format-log-entry-for-display entry)))))))))
+		      (format-log-entry-for-display entry))
+		      (:div :class "commentform"
+			    (markup:raw
+			    (drakma:http-request
+			     (concatenate 'string "http://localhost:9903/commentform?id="
+					  (write-to-string
+					   (log-entry-timestamp entry)))
+			     :protocol :http/1.1
+			     :method :post))))))))))
 
 (defun init-weblog-style ()
   (hunchentoot:define-easy-handler (weblogcss :uri "/weblog.css") ()
