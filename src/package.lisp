@@ -7,6 +7,8 @@
          
            :+init-all+ :+start+
 
+	   :logged-in-p
+
 	   :*master-acceptor*
 	   :+init+
 	   :+stop+
@@ -27,6 +29,7 @@
 	   :load-log-entries
 
 	   :+init-comment+
+	   :*comment-db*
 
 	   :+init-log-search+))
 

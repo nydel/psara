@@ -70,12 +70,23 @@
 			   (:a :href (concatenate 'string
 						  "mailto:"
 						  (comment-author comment)
-						  ".at.psara.dot.ps")))
+						  ".at.psara.dot.ps")
+			       (comment-author comment)))
 		      (:dd :class "commentcontent" (markup:raw (sloppy-regex-replace (comment-content comment))))
 		      (:hr :class "thinline"))))))
 
-;(defun comments-for-entry (entry-id)
-;  (
+(defun comments-for-entry (entry-id)
+  (remove-if-not #'(lambda (y)
+		     (equal (comment-entry-timestamp y) entry-id))
+		 *comment-db*))
+
+(defun how-many-comments (entry-id)
+  (length (comments-for-entry entry-id)))
+
+(defun comments-for-entry-markup (entry-id)
+  (mapcar #'(lambda (y)
+	      (format-comment-for-display y))
+	  (comments-for-entry entry-id)))
 
 (defun init-comment-form-style ()
   (hunchentoot:define-easy-handler (commentformstyle :uri "/commentform.css") ()
@@ -89,15 +100,15 @@
 
 (defun init-comment-form-go ()
   (hunchentoot:define-easy-handler (commentformgo :uri "/commentform.go") (entryid timestamp author content)
-    (setf (hunchentoot:content-type*) "text/plain")
+    (setf (hunchentoot:content-type*) "text/html")
     (format nil "~a"
 	    (let ((uname (logged-in-p)))
 	      (if uname
-		  (add-comment :entry-timestamp entryid
-			       :timestamp (if timestamp timestamp (write-to-string (get-universal-time)))
+		  (add-comment :entry-timestamp (parse-integer entryid :junk-allowed t)
+			       :timestamp (if timestamp (parse-integer timestamp :junk-allowed t) (get-universal-time))
 			       :author uname
 			       :content content))
-	      (hunchentoot:redirect "/login")))))
+	      (hunchentoot:redirect "/weblog")))))
     
 
 (defun init-comment-form ()
@@ -113,7 +124,7 @@
 	     (:body
 	      (:p
 	       (:form :action "/commentform.go"
-		      :method "get"
+		      :method "post"
 		      :enctype "application/x-www-form-urlencoded"
 		      :name "commentform"
 		      (:p
@@ -124,10 +135,19 @@
 		       (:p
 			(:input :type "hidden"
 				:name "entryid"
-				:value (write-to-string id))
+				:value  id)
 			(:input :type "submit"))))))))))
+
+(defun init-comment-display ()
+  (hunchentoot:define-easy-handler (commentdisplay :uri "/comments") (entryid)
+    (setf (hunchentoot:content-type*) "text/html")
+    (format nil "~a"
+	    (markup:markup
+	     (:div :id "commentContainer"
+		   (comments-for-entry-markup (parse-integer entryid :junk-allowed t)))))))
 
 (defun +init-comment+ ()
   (init-comment-form-style)
   (init-comment-form-go)
-  (init-comment-form))
+  (init-comment-form)
+  (init-comment-display))

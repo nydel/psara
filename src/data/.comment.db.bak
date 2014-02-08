@@ -1,5 +1,20 @@
 #S(CL-PSARA::COMMENT
-   :ENTRY-TIMESTAMP "\"3600796511\""
-   :TIMESTAMP "3600822565"
+   :ENTRY-TIMESTAMP 3600796511
+   :TIMESTAMP 3600836874
    :AUTHOR "nydel"
-   :CONTENT "this is a comment to go under the post entitled \"psara development updates\" which is currently on top.")
+   :CONTENT "here is a fourth comment. as for now obviously comments are not nested. i wonder how big of a deal such a feature would be. i suppose the cool thing about psara will be that you can write or implement an existing extension that will enable something like nested comments. i think i should get working on an administration panel, that'll be a good way to keep version control and to make sure the front-end doesn't get away from me / get away from the average user. will post an entry about it next i think.")
+#S(CL-PSARA::COMMENT
+   :ENTRY-TIMESTAMP 3600796511
+   :TIMESTAMP 3600835582
+   :AUTHOR "nydel"
+   :CONTENT "hooray!")
+#S(CL-PSARA::COMMENT
+   :ENTRY-TIMESTAMP 3600796511
+   :TIMESTAMP 3600834915
+   :AUTHOR "nydel"
+   :CONTENT "this is a second test comment!")
+#S(CL-PSARA::COMMENT
+   :ENTRY-TIMESTAMP 3600796511
+   :TIMESTAMP 3600834707
+   :AUTHOR "nydel"
+   :CONTENT "test")

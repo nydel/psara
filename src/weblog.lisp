@@ -85,7 +85,10 @@
 		 (:div :class "thinlongbar"
 		       (:p :class "simple" (markup:raw "&nbsp;")
 			   (:a :href (concatenate 'string "/commentform?id="
-						  (write-to-string (log-entry-timestamp entry))) "reply")
+						  (write-to-string (log-entry-timestamp entry)))
+			       (let ((x (ps::how-many-comments (log-entry-timestamp entry))))
+				 (if (eq x 0) "reply"
+				     (concatenate 'string "reply(" (write-to-string x) ")"))))
 			   (markup:raw "&nbsp;&nbsp;")
 			   (:a :href (concatenate 'string "/logeditform?id="
 						  (write-to-string (log-entry-timestamp entry))) "edit"))))))))
@@ -152,6 +155,14 @@
 		      (:hr :class "thinline")
 		      (markup:raw
 		      (format-log-entry-for-display entry))
+		      (:div :class "commentdisplay"
+			    (markup:raw
+			     (drakma:http-request
+			      (concatenate 'string "http://localhost:9903/comments?entryid="
+					   (write-to-string
+					    (log-entry-timestamp entry)))
+			      :protocol :http/1.1
+			      :method :post)))
 		      (:div :class "commentform"
 			    (markup:raw
 			    (drakma:http-request
@@ -276,7 +287,8 @@
     (format nil "~a"
 	    (cl-markup:html
 	     (:head
-	      (:title "new entry [psara/honeylog]"))
+	      (:title "new entry [psara/honeylog]")
+	      (:link :rel "stylesheet" :type "text/css" :href "/formstyle.css"))
 	     (:body
 	      (:p
 	       (:form :action "/weblogform.go"
