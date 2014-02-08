@@ -15,6 +15,7 @@
 			     (:file "psara")
 			     (:file "login")
 			     (:file "weblog")
+			     (:file "comments")
 			     (:file "markup")
 			     (:file "searchlogs")))))
 
