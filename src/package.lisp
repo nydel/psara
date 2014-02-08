@@ -5,7 +5,7 @@
   (:use :common-lisp)
   (:export 
          
-           :+init-all+ 
+           :+init-all+ :+start+
 
 	   :*master-acceptor*
 	   :+init+
@@ -24,7 +24,15 @@
 	   :+init-weblog+
 	   :*log-entry-db*
 	   :add-log-entry
-	   :load-log-entries))
+	   :load-log-entries
+
+	   :+init-log-search+))
 
 (in-package :cl-psara)
 
+
+(load "psara.lisp")
+(load "login.lisp")
+(load "markup.lisp")
+(load "searchlogs.lisp")
+(load "weblog.lisp")

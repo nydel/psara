@@ -15,6 +15,8 @@
     (setf string-new (cl-ppcre:regex-replace-all "(\\#)(\\w+)" string-new "<a href=searchlogs?q=\\2>#\\2</a>"))
     (setf string-new (cl-ppcre:regex-replace-all "(\\[)([buisp])(\\])([^\\[]+)(\\[\\/[buisp]\\])" string-new "<\\2>\\4</\\2>"))
     (setf string-new (cl-ppcre:regex-replace-all "\\s+\\s+" string-new "<br />"))
+    (setf string-new (cl-ppcre:regex-replace-all "\\[br\\]" string-new "<br />"))
+    (setf string-new (cl-ppcre:regex-replace-all "-{5}" string-new "<hr class=\"thinsoft\" />"))
     string-new))
 
 

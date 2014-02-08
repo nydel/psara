@@ -39,3 +39,6 @@
 		    (mapcar (lambda (y)
 			      (format-log-entry-for-display y))
 			    (search-logs-for-string q))))))))
+
+(defun +init-log-search+ ()
+  (init-search-page))

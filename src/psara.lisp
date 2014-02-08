@@ -18,7 +18,11 @@
 (defun +init-all+ ()
   (+init+)
   (+init-login+)
-  (+init-weblog+))
+  (+init-weblog+)
+  (+init-log-search+))
+
+(defun +start+ ()
+  (+init-all+))
 
 (defun +stop+ ()
   (hunchentoot:stop *master-acceptor*))

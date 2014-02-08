@@ -1,4 +1,49 @@
 #S(CL-PSARA::LOG-ENTRY
+   :TIMESTAMP 3600796511
+   :SUBJECT "psara development update"
+   :AUTHOR "nydel"
+   :CONTENT "the weblog feature of the psara suite continues to develop, having undergone some rapid expansion over the past days.
+[br]
+now might make a good time to reel in the create-new-things attitude in favor of a clean-up-what's-done manner. we are happy with the way our pretty, sweet, and [i]really[/i] awesome w3 utilization of #lisp is turning out, and we do not want things to get sloppy; when things get sloppy, projects seem easier to begin again from scratch, and then they never get done. this one, my friend, this one, we are going to get [b]done[/b] because it's a good idea, necessary project, and an interesting endeavour to undertake as a hacker/programmer.
+-----
+we want to uh style the forms, yeah, that's a good idea."
+   :TAGS ("test" "editing" "entry" "dev" "update"))
+#S(CL-PSARA::LOG-ENTRY
+   :TIMESTAMP 3600772075
+   :SUBJECT "progress in round two"
+   :AUTHOR "nydel"
+   :CONTENT "as can be seen, the [s]markup language[/s] is off the todo list; well, actually there are quite a few improvements that need to be made, mostly that the function needs to be made either looped or recursive in order to avoid hideous redundancy in code, alongside the addition of at least a few more sets of acceptable expressions for the language.
+
+
+there are three line-breaks above this line, and will be four below it.
+
+
+
+i've set the markup language to handle linebreaks such that an instance of two calls for insertion of a newline at the display. but now i'm wondering if i need to set special rules for odd numbers, etcetera.
+
+
+maybe it could be cool to just call an \"i'm done with this section\" type thing or [i]whatever[/i] by indicating it at the end of a line, meaning at the end of a line in the sense of a regular expression, not at the end of a line as marked by punctuation.  for example, perhaps the following syntax could end this segment of the string and prepare for a new one!$
+
+why not call commands like that, with an exclamation point followed by a single character? it's simple and clean. here would be another.!$
+
+i will leave this one, and do one line break before doing the syntax that would indicate it's the [i]beginning[/i] of a new segment.
+!^so this would be a new segment, as indicated by the ! followed by a ^.
+
+okay this entry gives me plenty to mess with."
+   :TAGS ("dev" "markup" "progress"))
+#S(CL-PSARA::LOG-ENTRY
+   :TIMESTAMP 3600721118
+   :SUBJECT "round two"
+   :AUTHOR "nydel"
+   :CONTENT "okay it's round two of development on the #psara project. just to be fun, i think i'll start with a little work on a markup language, so things can be [b]bold[/b] and [u]underlined[/u] and the like. also i should work on #hashtags and a general search to justify the existence of tag attachment to posts and for other reasons. in addition we will need what will essentially be a permalink page, though naming it as a permalink is misleading because of the way the internals will work. i don't care about that right now.
+
+there are two newlines before this sentence, the markup ought to turn that into a visible linebreak in the html.
+
+remember we're using the :cl-markup package so we may need to change something such that the results of a (format-this-log-entry) or whatever are printed using (markup::raw) else the post-markup-processing html may not show up. but that's later.
+
+it is a wonderful day to be a programmer and a wonderful day to be a developer on the #psara team."
+   :TAGS ("psara" "team" "dev" "markup"))
+#S(CL-PSARA::LOG-ENTRY
    :TIMESTAMP 3600086858
    :SUBJECT "hunchentoot problems on isismelting vps"
    :AUTHOR "nydel"

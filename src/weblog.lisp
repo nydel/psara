@@ -68,14 +68,27 @@
 			       (:min 2 #\0) ":"
 			       (:sec 2 #\0) "]"))))
 		      (:dt :class "logentrytitle"
-			   (:a :href "#" (log-entry-subject entry))
-			   " by " (:a :href "#" (log-entry-author entry)))
+			   (markup:raw "&nbsp;")
+			   (:a :href (concatenate 'string "/weblogpermalink?id=" (write-to-string (log-entry-timestamp entry)))
+			       (log-entry-subject entry))
+			   " by " (:a :href (concatenate 'string
+							 "mailto:"
+							 (log-entry-author entry)
+							 ".at.psara.dot.ps?subject="
+							 (log-entry-subject entry)) (log-entry-author entry)))
 		      (:dd :class "logentrycontent" (markup:raw (sloppy-regex-replace (log-entry-content entry))))
 		      (:dt :class "logentrytags" ;;list of items to strings that are links
 			   (mapcar (lambda (y)
 				     (markup:markup
-				      (:a :class "logtag" :href "#" y)))
-				   (log-entry-tags entry))))))))
+				      (:a :class "logtag" :href (concatenate 'string "/searchlogs?q=" y) y)))
+				   (log-entry-tags entry)))
+		 (:div :class "thinlongbar"
+		       (:p :class "simple" (markup:raw "&nbsp;")
+			   (:a :href (concatenate 'string "/logeditform?id="
+						  (write-to-string (log-entry-timestamp entry))) "edit"))))))))
+
+
+				      
 
 
 (defun init-weblog-display ()
@@ -134,8 +147,8 @@
 				(:a :href "https://github.com/miercoledi/psara.git"
 				    "https://github.com/miercoledi/psara.git")))
 		      (:hr :class "thinline")
-		      
-		      (format-log-entry-for-display entry))))))))
+		      (markup:raw
+		      (format-log-entry-for-display entry)))))))))
 
 (defun init-weblog-style ()
   (hunchentoot:define-easy-handler (weblogcss :uri "/weblog.css") ()
@@ -145,14 +158,17 @@
 			   (:padding-left "05px"
 			    :padding-right "05px"))
 			  (("a:link")
-			   (:color "#229944"
+			   (:color "#6600CC"
 			    :text-decoration "none"))
 			  (("a:hover")
 			   (:text-decoration "underline"))
 			  (("a:visited")
-			   (:text-decoration "none"))
+			   (:text-decoration "none"
+			    :color "#229944"))
 			  (("a:active")
 			   (:text-decoration "none"))
+			  (("a.logtag")
+			   (:color "#6600CC"))
 			  (("div.mainContainer")
 			   (:width "600px"
 			    :margin-left "auto"
@@ -170,22 +186,63 @@
 			  ((".topContainer")
 			   (:width "100%"))
 			  ((".logentrytitle")
-			   (:background "#EEEEEE"
+			   (:background "#CCCCEE"
 			    :border-radius "25px 25px 25px 25px"))
 			  ((".logentrytags")
-			   (:background "#DDDDDD"
+			   (:background "#EEEEEE"
 			    :border-radius "25px 25px 25px 25px"
 			    :text-align "right"))
+			  ((".thinlongbar")
+			   (:background "#DDDDDD"
+			    :border-radius "25px 25px 25px 25px"
+			    :border "0"
+			    :margin "0"
+			    :padding "0"))
+			  ((".simple")
+			   (:border "0"
+			    :margin "0"
+			    :padding "0"))
+			  ((".floatleft")
+			   (:text-align "left"
+			    :float "left"))
 			  (("hr.thinline")
 			   (:border "solid 1px #000000"
 			    :border-top "0"
 			    :border-right "0"
 			    :border-left "0"
 			    :margin "0"
+			    :padding "0"))
+			  (("hr.thinsoft")
+			   (:border "solid 1px #666666"
+			    :border-top "0"
+			    :border-right "0"
+			    :border-left "0"
+			    :margin "0"
 			    :padding "0"))))))
+
+(defun init-weblog-form-style ()
+  (hunchentoot:define-easy-handler (weblogformcss :uri "/formstyle.css") ()
+    (setf (hunchentoot:content-type*) "text/css")
+    (format nil "~a"
+	    (css-lite:css (("input[type=text]")
+			   (:border "1px solid #000000"
+			    :border-radius "25px 25px 25px 25px"))
+			  (("textarea")
+			   (:border "1px solid #000000"
+			    :border-radius "25px 25px 25px 25px"
+			    :height "200px"
+			    :width "500px"))))))
 
 (defun string-to-word-list (string)
   (cl-ppcre:split "\\s+" string))
+
+(defun word-list-to-string (word-list)
+  (let* ((word-list-with-spaces (mapcar #'(lambda (y)
+					    (concatenate 'string y " ")) word-list))
+	 (function-to-eval (append '(concatenate 'string) word-list-with-spaces))
+	 (string1 (eval function-to-eval))
+	 (string (subseq string1 0 (1- (length string1)))))
+    string))
 
 (defun init-weblog-form-go ()
   (hunchentoot:define-easy-handler (weblogformgo :uri "/weblogform.go") (subject content tags)
@@ -232,9 +289,67 @@
 				:id "tags")
 			(:input :type "submit"))))))))))
 
+(defun edit-entry (id subject content tags)
+  (let ((entry (find-if #'(lambda (y)
+			    (equal (log-entry-timestamp y) (read-from-string id))) *log-entry-db*)))
+    (setf (log-entry-subject entry) subject)
+    (setf (log-entry-content entry) content)
+    (setf (log-entry-tags entry) (string-to-word-list tags))
+    (write-entries)))
+
+(defun init-edit-form-go ()
+  (hunchentoot:define-easy-handler (editformgo :uri "/logeditform.go") (stamp subject content tags)
+    (setf (hunchentoot:content-type*) "text/plain")
+      (edit-entry stamp subject content tags)
+      (hunchentoot:redirect "/weblog")))
+
+
+(defun init-edit-form ()
+  (hunchentoot:define-easy-handler (logeditform :uri "/logeditform") (id)
+    (setf (hunchentoot:content-type*) "text/html")
+    (unless (logged-in-p)
+      (hunchentoot:redirect "/login"))
+    (format nil "~a"
+	    (let ((entry (car (remove-if-not #'(lambda (y)
+						 (equal (read-from-string id)
+							(log-entry-timestamp y)))
+					     *log-entry-db*))))
+	      (cl-markup:html
+	       (:head
+		(:title (concatenate 'string (log-entry-subject entry) " [psara/edit]"))
+		(:link :rel "stylesheet" :type "text/css" :href "/formstyle.css"))
+	       (:body
+		(:p
+		 (:form :action "/logeditform.go"
+			:method "post"
+			:enctype "application/x-www-form-urlencoded"
+			:name "logeditform"
+			(:p
+			 (:p
+			  (:input :type "text"
+				  :name "subject"
+				  :value (log-entry-subject entry)
+				  :id "subject"))
+			 (:p
+			  (:textarea :name "content"
+				     :id "content" (log-entry-content entry)))
+			 (:p
+			  (:input :type "text"
+				  :name "tags"
+				  :value (word-list-to-string (log-entry-tags entry)))
+			  (:input :type "hidden"
+				  :name "stamp"
+				  :id "stamp"
+				  :value (write-to-string (log-entry-timestamp entry)))
+			  (:input :type "submit")))))))))))
+
 (defun +init-weblog+ ()
   (load-log-entries)
   (init-weblog-style)
+  (init-weblog-form-style)
   (init-weblog-display)
   (init-weblog-form)
-  (init-weblog-form-go))
+  (init-weblog-form-go)
+  (init-weblog-permalink)
+  (init-edit-form)
+  (init-edit-form-go))
