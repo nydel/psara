@@ -14,6 +14,7 @@
 		:components ((:file "package")
 			     (:file "psara")
 			     (:file "login")
+			     (:file "toolbar")
 			     (:file "weblog")
 			     (:file "comments")
 			     (:file "markup")
