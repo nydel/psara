@@ -35,7 +35,7 @@
 		       (:li :class "toolbaritem"
 			    (:a :href "/weblogform" "new-entry"))
 		       (:li :class "toolbaritem"
-			    (:a :href "/searchform" "search"))
+			    (:a :href "/searchlogs?q=psara" "search"))
 		       (:li :class "toolbaritem"
 			    (:a :href "/adminpanel" "admin-panel"))
 		       (:li :class "toolbaritem"
