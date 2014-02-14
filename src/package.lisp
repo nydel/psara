@@ -31,6 +31,8 @@
 	   :+init-comment+
 	   :*comment-db*
 
+	   :+init-toolbar+
+
 	   :+init-log-search+))
 
 (in-package :cl-psara)
@@ -41,4 +43,5 @@
 (load "login.lisp")
 (load "markup.lisp")
 (load "searchlogs.lisp")
+(load "toolbar.lisp")
 (load "weblog.lisp")

@@ -147,6 +147,7 @@
 		   (comments-for-entry-markup (parse-integer entryid :junk-allowed t)))))))
 
 (defun +init-comment+ ()
+  (load-comments)
   (init-comment-form-style)
   (init-comment-form-go)
   (init-comment-form)

@@ -21,7 +21,8 @@
   (+init-login+)
   (+init-weblog+)
   (+init-log-search+)
-  (+init-comment+))
+  (+init-comment+)
+  (+init-toolbar+))
 
 (defun +start+ ()
   (+init-all+))

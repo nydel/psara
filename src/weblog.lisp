@@ -84,7 +84,7 @@
 				   (log-entry-tags entry)))
 		 (:div :class "thinlongbar"
 		       (:p :class "simple" (markup:raw "&nbsp;")
-			   (:a :href (concatenate 'string "/commentform?id="
+			   (:a :href (concatenate 'string "/weblogpermalink?id="
 						  (write-to-string (log-entry-timestamp entry)))
 			       (let ((x (ps::how-many-comments (log-entry-timestamp entry))))
 				 (if (eq x 0) "reply"
@@ -98,34 +98,38 @@
 
 
 (defun init-weblog-display ()
-  (page weblog "/weblog" "text/html" ()
-    (markup:html
-     (:head
-      (:title "psara home [psara/honeylog]")
-      (:link :rel "stylesheet" :type "text/css" :href "/weblog.css"))
-     (:body
-      (:div :class "mainContainer"
-	    (:div :class "topContainer"
-;		  (:div :class "loginContainer"
-;;
-;; a remodel of the login form such that if logged-in-p it's a short wide mini control panel
-;; and if you're not logged in it's a short wide mini login form with a link to registration
-;;
-;
-		  (:a :href "/weblog"
-		      (:img
-		       :src "http://www.isismelting.com/psara001.png"
-		       :id "psaralogo")))
-	    (:div :class "topBar"
-		  (:p :class "topBar"
-		      "psara on github: "
-		      (:a :href "https://github.com/miercoledi/psara.git"
-			  "https://github.com/miercoledi/psara.git")))
-	    (:hr :class "thinline")
-	    
-	    (mapcar (lambda (y)
-		      (format-log-entry-for-display y))
-		    (subseq *log-entry-db* 0 8)))))))
+  (hunchentoot:define-easy-handler (weblog :uri "/weblog") ()
+    (setf (hunchentoot:content-type*) "text/html")
+    (let* ((session (hunchentoot:start-session))
+	   (cookie (hunchentoot:cookie-out "hunchentoot-session"))
+	   (uname (hunchentoot:session-value 'uname session)))
+    (format nil "~a"
+	    (markup:html
+	     (:head
+	      (:title "psara home [psara/honeylog]")
+	      (:link :rel "stylesheet" :type "text/css" :href "/weblog.css"))
+	     (:body
+	      (:div :class "mainContainer"
+		    (:div :class "topContainer"
+			  (:div :class "usertoolbarContainer"
+				(markup:raw
+				 (drakma:http-request 
+				  (concatenate 'string "http://localhost:9903/toolbar?uname=" uname)
+						      :protocol :http/1.1)))
+			  (:a :href "/weblog" :class "psaralogo"
+			      (:img
+			       :src "http://www.isismelting.com/psara001.png"
+			       :id "psaralogo")))
+		    (:div :class "topBar"
+			  (:p :class "topBar"
+			      "psara on github(new tab/win): "
+			      (:a :target "_new"
+				  :href "https://github.com/miercoledi/psara.git"
+				  "https://github.com/miercoledi/psara.git")))
+		    (:hr :class "thinline")		    
+		    (mapcar (lambda (y)
+			      (format-log-entry-for-display y))
+			    (subseq *log-entry-db* 0 8)))))))))
 
 (defun init-weblog-as-index ()
   (hunchentoot:define-easy-handler (weblogasindex :uri "/") ()
@@ -202,7 +206,7 @@
 			    :margin-right "auto"))
 			  (("div.logentry")
 			   (:border-bottom "solid #000000 1px"))
-			  (("#psaralogo")
+			  (("#psaralogo, .psaralogo")
 			   (:height "100px"
 			    :width "100px"
 			    :border "solid #DDDDDD 1px"
@@ -277,11 +281,13 @@
     (format nil "~a"
 	    (let ((uname (logged-in-p)))
 	      (if uname
-		  (add-log-entry :timestamp (get-universal-time)
-				 :subject subject
-				 :author uname
-				 :content content
-				 :tags (string-to-word-list tags))
+		  (progn
+		    (add-log-entry :timestamp (get-universal-time)
+				   :subject subject
+				   :author uname
+				   :content content
+				   :tags (string-to-word-list tags))
+		    (hunchentoot:redirect "/"))
 		  (hunchentoot:redirect "/login"))))))
 
 (defun init-weblog-form ()

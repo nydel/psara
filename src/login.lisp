@@ -92,6 +92,14 @@
 		(markup:markup
 		 (:p "there was a problem logging in!"))))))
 
+(defun init-logout ()
+  (hunchentoot:define-easy-handler (logout :uri "/logout") ()
+    (setf (hunchentoot:content-type*) "text/plain")
+    (let ((session (hunchentoot:start-session)))
+      (hunchentoot:remove-session session))
+    (hunchentoot:redirect "/login")))
+      
+
 
 (defun init-login-form ()
   (page login "/login" "text/html" ()
@@ -116,6 +124,7 @@
 
 (defun +init-login+ ()
   (load-users)
+  (init-logout)
   (init-login-form)
   (init-login-go))
 

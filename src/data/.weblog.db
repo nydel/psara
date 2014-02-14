@@ -1,4 +1,27 @@
 #S(CL-PSARA::LOG-ENTRY
+   :TIMESTAMP 3601363765
+   :SUBJECT "pushing round3 to github"
+   :AUTHOR "nydel"
+   :CONTENT "things have gotten a tiny bit messy, this is true. but that's okay. now is a brief jolt of expansion. modules are being added to the system and that requires a lot of finesse simply vis a vis getting things to work on a practical level.
+
+there are some big features that need to be added in order to make this weblog portion of the psara suite look and in fact [i]be[/i] a truly stand-alone device ready for use. and that means rapid expansion.
+
+perhaps phases four or five will have to do more with the simplification or neatening of code. in the meantime we just can't have it [i]too[/i] messy."
+   :TAGS ("github" "push" "dev" "version" "control"))
+#S(CL-PSARA::LOG-ENTRY
+   :TIMESTAMP 3601358957
+   :SUBJECT "a quick test"
+   :AUTHOR "nydel"
+   :CONTENT "i edited the if statement inside of the process function for the weblogform (of :uri weblogform.go) so that it should now redirect the user to the root of the w3 application upon submitting a new entry and adding it to the database of other log entries. so i will know whether that works upon submitting this form."
+   :TAGS ("test" "redirect" "new" "entry"))
+#S(CL-PSARA::LOG-ENTRY
+   :TIMESTAMP 3601344279
+   :SUBJECT "round three"
+   :AUTHOR "nydel"
+   :CONTENT "and so begins #round3 of work on the #psara project development. there is a lot to be done, and no shortage of excitement, flow of idea, will to work, etcetera in the current staff / development team. one thing that will make use of the weblog, while it's still in early development, easier for us will be the installation of a small toolbar for the logged in - it should contain simple things like a link to log out, a link to the weblogform acceptor's uri, and a link to the administrative panel (yet to be conceived let alone coded).[br][br]-----[br]still testing markup as we go, between this sentence and the one that precedes it there is no spacing, just the markup equivalent of an html <br /> tag. also the last sentence contains an actualy html br tag, which i've included to see whether or not we handled the never-process-html functionality (or removal of html-processing functionality, whatever) in the base code that reads entries. it's a total coin toss and i'm excited to see what the results will be. ok, that's enough to begin, also this time [b]i want to make sure to take more notes[/b] and [b]create more entries[/b] while working on the project. that will be good for version control. as soon as the login bar and admin panel are in place, we can update version 0.1 and call it 0.1.1 alpha. that will mark the beginning of psara's solidification, beginning with a pretty, small, and really awesome web-based logging system."
+   :TAGS ("round3" "dev" "psara" "toolbar" "login" "weblogform" "admin"
+          "panel"))
+#S(CL-PSARA::LOG-ENTRY
    :TIMESTAMP 3600837354
    :SUBJECT "new features, administration"
    :AUTHOR "nydel"

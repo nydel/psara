@@ -1,4 +1,29 @@
 #S(CL-PSARA::COMMENT
+   :ENTRY-TIMESTAMP 3601344279
+   :TIMESTAMP 3601359284
+   :AUTHOR "nydel"
+   :CONTENT "quick [b]test[/b] to see whether the replies go through the #markup filter or not. they should.")
+#S(CL-PSARA::COMMENT
+   :ENTRY-TIMESTAMP 3601358957
+   :TIMESTAMP 3601359093
+   :AUTHOR "nydel"
+   :CONTENT "that seemed to have worked. in addition the reply link now, appropriately, goes to the permalink rather than to the comment form on its cold lonesome :) ok!")
+#S(CL-PSARA::COMMENT
+   :ENTRY-TIMESTAMP 3601344279
+   :TIMESTAMP 3601347314
+   :AUTHOR "nydel"
+   :CONTENT "after the weblogform.go application does its job, it needs to redirect to the homepage")
+#S(CL-PSARA::COMMENT
+   :ENTRY-TIMESTAMP 3601344279
+   :TIMESTAMP 3601344475
+   :AUTHOR "nydel"
+   :CONTENT "and the \"edit\" link requires one of two changes. the first would be that it only appears under the condition that the end-user is logged in. the second would be that the edit form checks for appropriate login credentials and, unless they check out, redirects the user to the login form.")
+#S(CL-PSARA::COMMENT
+   :ENTRY-TIMESTAMP 3601344279
+   :TIMESTAMP 3601344374
+   :AUTHOR "nydel"
+   :CONTENT "the \"reply\" link should go to the permalink page rather than an isolated instance of the comment form. and note that html was processed in the above entry. we will have to decide how to deal with that.")
+#S(CL-PSARA::COMMENT
    :ENTRY-TIMESTAMP 3600837354
    :TIMESTAMP 3600839684
    :AUTHOR "nydel"
