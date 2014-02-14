@@ -1,4 +1,12 @@
 #S(CL-PSARA::LOG-ENTRY
+   :TIMESTAMP 3601364549
+   :SUBJECT "testing on isismelting.com"
+   :AUTHOR "nydel"
+   :CONTENT "well it seems that the :cl-psara system is functional on isismelting.com! that is a huge step, as it indicates the steps we've been taking toward portability have not been for naught. this is cause to celebrate.
+[hr]
+after posting this entry, i'll push it from isis then pull it onto the secret localhost where it lives. getting excited!"
+   :TAGS ("round3" "dev" "psara" "isis" "github" "push" "pull"))
+#S(CL-PSARA::LOG-ENTRY
    :TIMESTAMP 3601363765
    :SUBJECT "pushing round3 to github"
    :AUTHOR "nydel"

@@ -1,4 +1,14 @@
 #S(CL-PSARA::LOG-ENTRY
+   :TIMESTAMP 3601363765
+   :SUBJECT "pushing round3 to github"
+   :AUTHOR "nydel"
+   :CONTENT "things have gotten a tiny bit messy, this is true. but that's okay. now is a brief jolt of expansion. modules are being added to the system and that requires a lot of finesse simply vis a vis getting things to work on a practical level.
+
+there are some big features that need to be added in order to make this weblog portion of the psara suite look and in fact [i]be[/i] a truly stand-alone device ready for use. and that means rapid expansion.
+
+perhaps phases four or five will have to do more with the simplification or neatening of code. in the meantime we just can't have it [i]too[/i] messy."
+   :TAGS ("github" "push" "dev" "version" "control"))
+#S(CL-PSARA::LOG-ENTRY
    :TIMESTAMP 3601358957
    :SUBJECT "a quick test"
    :AUTHOR "nydel"
