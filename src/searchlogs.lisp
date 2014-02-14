@@ -18,7 +18,8 @@
 	    (markup:html
 	     (:head
 	      (:title "log-entry search [psara/honeylog]")
-	      (:link :rel "stylesheet" :type "text/css" :href "/weblog.css"))
+	      (:link :rel "stylesheet" :type "text/css" :href "/weblog.css")
+	      (:link :rel "stylesheet" :type "text/css" :href "/formstyle.css"))
 	     (:body
 	      (:div :class "mainContainer"
 		    (:div :class "topContainer"
@@ -32,8 +33,11 @@
 			      (:a :href "https://github.com/miercoledi/psara.git" "https://github.com/miercoledi/psara.git"))
 			  (:hr :class "thinline")
 			  (:p :class "topBar"
-			      "search results for query "
-			      (:b q))
+			      (:form :class "inline"
+				     :action "/searchlogs"
+				     (:label :for "q" "search results for query ")
+				     (:input :type "text" :name "q" :placeholder q)
+				     (:input :type "submit" :value "go")))
 			  (:hr :class "thinline"))
 
 		    (mapcar (lambda (y)

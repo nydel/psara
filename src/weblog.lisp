@@ -114,7 +114,9 @@
 			  (:div :class "usertoolbarContainer"
 				(markup:raw
 				 (drakma:http-request 
-				  (concatenate 'string "http://localhost:9903/toolbar?uname=" uname)
+				  (if uname
+				      (concatenate 'string "http://localhost:9903/toolbar?uname=" uname)
+				      (concatenate 'string "http://localhost:9903/toolbarnotloggedin"))
 						      :protocol :http/1.1)))
 			  (:a :href "/weblog" :class "psaralogo"
 			      (:img
@@ -258,6 +260,13 @@
 	    (css-lite:css (("input[type=text]")
 			   (:border "1px solid #000000"
 			    :border-radius "25px 25px 25px 25px"))
+			  (("input[type=submit]")
+			   (:border "1px solid #000000"
+			    :border-radius "25px 25px 25px 25px"))
+			  (("form.inline")
+			   (:display "inline"
+			    :margin "0"
+			    :padding "0"))
 			  (("textarea")
 			   (:border "1px solid #000000"
 			    :border-radius "25px 25px 25px 25px"

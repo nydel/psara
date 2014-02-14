@@ -41,6 +41,24 @@
 		       (:li :class "toolbaritem"
 			    (:a :href "/logout" "logout")))))))))
 
+(defun init-not-logged-in-toolbar ()
+  (hunchentoot:define-easy-handler (toolbarnotloggedin :uri "/toolbarnotloggedin") ()
+    (setf (hunchentoot:content-type*) "text/html")
+    (format nil "~a"
+	    (markup:markup
+	     (:head
+	      (:link :rel "stylesheet" :type "text/css" :href "/toolbar.css"))
+	     (:body
+	      (:div :id "usertoolbar"
+		    (:ul
+		     (:li :class "toolbaritem"
+			  (:a :href "/login" "login"))
+		     (:li :class "toolbaritem"
+			  (:a :href "/register" "register"))
+		     (:li :class "toolbaritem"
+			  (:a :href "/logout" "logout")))))))))
+
 (defun +init-toolbar+ ()
   (init-logged-in-toolbar-style)
+  (init-not-logged-in-toolbar)
   (init-logged-in-toolbar))
