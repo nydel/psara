@@ -4,7 +4,7 @@
   (hunchentoot:define-easy-handler (toolbarstyle :uri "/toolbar.css") ()
     (setf (hunchentoot:content-type*) "text/css")
     (format nil "~a"
-	    (css-lite:css (("ul, li")
+	    (css-lite:css (("ul.toolbar, li.toolbaritem")
 			   (:display "inline"
 			    :padding "0"
 			    :margin "0"))
@@ -29,7 +29,7 @@
 		(:link :rel "stylesheet" :type "text/css" :href "/toolbar.css"))
 	       (:body
 		(:div :id "usertoolbar"
-		      (:ul
+		      (:ul :class "toolbar"
 		       (:li :class "toolbaritem"
 			    "logged in as " uname)
 		       (:li :class "toolbaritem"

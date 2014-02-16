@@ -1,4 +1,18 @@
 #S(CL-PSARA::COMMENT
+   :ENTRY-TIMESTAMP 3601525146
+   :TIMESTAMP 3601530606
+   :AUTHOR "nydel"
+   :CONTENT "while adding feature to markup that makes a line \"- example line\" into a list item, i found that i needed to make the first regex-replace insert the declaration of the list (<ul>) as well as the first list item (<li>) but i didn't add anything to end the list. i was going to suggest writing a function that handles something like that (first, last, middle) but i think now of a simpler way to handle it:
+
+
+
+i can search after the initial job is complete and insert the closing list tag (</ul>) where appropriate. let's do that now.")
+#S(CL-PSARA::COMMENT
+   :ENTRY-TIMESTAMP 3601344279
+   :TIMESTAMP 3601359284
+   :AUTHOR "nydel"
+   :CONTENT "quick [b]test[/b] to see whether the replies go through the #markup filter or not. they should.")
+#S(CL-PSARA::COMMENT
    :ENTRY-TIMESTAMP 3601358957
    :TIMESTAMP 3601359093
    :AUTHOR "nydel"

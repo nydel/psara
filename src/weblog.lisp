@@ -190,6 +190,11 @@
 	    (css-lite:css (("a.logtag")
 			   (:padding-left "05px"
 			    :padding-right "05px"))
+			  (("html, div, p, dt, dl, dd, body")
+			   (:background "#FFFFFF"
+			    :color "#111111"
+			    :font-family "ubuntu mono, droid sans mono, freemono, monospace"
+			    :font-size "09pt"))
 			  (("a:link")
 			   (:color "#6600CC"
 			    :text-decoration "none"))
@@ -221,6 +226,14 @@
 			  ((".logentrytitle")
 			   (:background "#CCCCEE"
 			    :border-radius "25px 25px 25px 25px"))
+			  ((".logentrylist")
+			   (:display "block"))
+			  (("li.logentrylist")
+			   (:background-image "url(http://www.fembook.in/IMAGES/icon_bullet3.gif)"
+			    :background-repeat "no-repeat"
+			    :background-position "0px 0px"
+			    :padding-left "20px"
+			    :margin-left "0"))
 			  ((".logentrytags")
 			   (:background "#EEEEEE"
 			    :border-radius "25px 25px 25px 25px"

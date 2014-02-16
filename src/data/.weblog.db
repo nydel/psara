@@ -1,4 +1,29 @@
 #S(CL-PSARA::LOG-ENTRY
+   :TIMESTAMP 3601525146
+   :SUBJECT "admin panel plan"
+   :AUTHOR "nydel"
+   :CONTENT "features of the admin panel will include:
+
+- editing the basic style and possibly direct css source
+- add/remove/modify/manage users
+- manage and possibly install widgets
+- possibly browse available widgets from the psara repo
+- a small administration bulletin board for admins to keep in touch
+- warn the user that they are in administration mode, prompt for password again, maybe make a banner at the top of the screen that stays there until they click its \"finish administration\" button
+- when changes are made, perhaps some of them can be automatically recognized by psara and logged, and also the user will be required to provide some sort of description of why he accessed administration and what he did etc
+- a backup of whatever will be saved before changes are committed
+- there should be a revert feature in case someone makes a mistake
+- there should in addition be several failsafe restore functions that get the application working again without losing any of its this-implementation-specific data, that is, the hidden files kept in the data directory
+- before i do any of that, i'm going to try to get the markup language to recognize this as a list and turn it into html :)
+- wish me luck!   
+this shouldn't be on a new line i don't think.
+
+
+but this should.
+
+ok there :)"
+   :TAGS ("good" "luck" "admin" "panel" "markup" "list"))
+#S(CL-PSARA::LOG-ENTRY
    :TIMESTAMP 3601364549
    :SUBJECT "testing on isismelting.com"
    :AUTHOR "nydel"
