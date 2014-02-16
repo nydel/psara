@@ -7,12 +7,9 @@
          
            :+init-all+ :+start+
 
-	   :logged-in-p
-
 	   :*master-acceptor*
 	   :+init+
 	   :+stop+
-
 	   :page
 	   :test-page
 
