@@ -8,7 +8,7 @@
 			   (:display "inline"
 			    :padding "0"
 			    :margin "0"))
-			  ((".toolbaritem")
+			  (("li.toolbaritem")
 			   (:padding-left "5px"
 			    :padding-right "5px"))
 			  (("div#usertoolbar")
@@ -31,7 +31,7 @@
 		(:div :id "usertoolbar"
 		      (:ul :class "toolbar"
 		       (:li :class "toolbaritem"
-			    "logged in as " uname)
+			    "logged in as " uname (markup:raw "&nbsp;&nbsp;"))
 		       (:li :class "toolbaritem"
 			    (:a :href "/weblogform" "new-entry"))
 		       (:li :class "toolbaritem"

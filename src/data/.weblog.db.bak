@@ -21,11 +21,7 @@ this shouldn't be on a new line i don't think.
 
 but this should.
 
-ok there :)
-
-
-
-"
+ok there :)"
    :TAGS ("good" "luck" "admin" "panel" "markup" "list"))
 #S(CL-PSARA::LOG-ENTRY
    :TIMESTAMP 3601364549
