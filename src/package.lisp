@@ -42,3 +42,4 @@
 (load "searchlogs.lisp")
 (load "toolbar.lisp")
 (load "weblog.lisp")
+(load "weblog-etc.lisp")

@@ -31,7 +31,7 @@
 		(:div :id "usertoolbar"
 		      (:ul :class "toolbar"
 		       (:li :class "toolbaritem"
-			    "logged in as " uname (markup:raw "&nbsp;&nbsp;"))
+			    "psara" (markup:raw "&nbsp;&rarr;&nbsp") "logged in as " uname (markup:raw "&nbsp;&nbsp;"))
 		       (:li :class "toolbaritem"
 			    (:a :href "/weblogform" "new-entry"))
 		       (:li :class "toolbaritem"
@@ -50,7 +50,9 @@
 	      (:link :rel "stylesheet" :type "text/css" :href "/toolbar.css"))
 	     (:body
 	      (:div :id "usertoolbar"
-		    (:ul
+		    (:ul :class "toolbar"
+		     (:li :class "toolbaritem"
+			  "psara [not logged in]" (markup:raw "&nbsp;&nbsp;"))
 		     (:li :class "toolbaritem"
 			  (:a :href "/login" "login"))
 		     (:li :class "toolbaritem"

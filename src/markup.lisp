@@ -44,6 +44,9 @@
 
     ;;let five hyphens indicate a horizontal line
     (setf string-new (cl-ppcre:regex-replace-all "-{5}" string-new "<hr class=\"thinsoft\" />"))
+
+    (setf string-new (cl-ppcre:regex-replace-all "(\\[now\\])" string-new (format nil "~a" (get-universal-time))))
+
     string-new))
 
 

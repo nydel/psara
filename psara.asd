@@ -16,6 +16,7 @@
 			     (:file "login")
 			     (:file "toolbar")
 			     (:file "weblog")
+			     (:file "weblog-etc")
 			     (:file "comments")
 			     (:file "markup")
 			     (:file "searchlogs")))))
