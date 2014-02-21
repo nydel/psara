@@ -19,8 +19,8 @@ right away i need to remember how to do macro characters and assign one to this 
 (in-package :cl-psara)
 
 (defmacro &do-etc (function &key etc)
+  "concatenate functions that evaluate to a string"
   `(format nil "~a~a" ,function (if ,etc (eval ,etc) "")))
-		
 
 (defun simple-datetime-string (timestamp)
   (local-time:format-timestring
@@ -144,19 +144,23 @@ right away i need to remember how to do macro characters and assign one to this 
 		  (&format-log-entry-bottom-bar entry :etc etc)))))))
 
 (defun format-log-entry (entry &key etc)
-  (markup:markup
-   (:div :id (write-to-string (log-entry-timestamp entry)) :class "logentry"
-	 (:dl :class "psaraweblog"
-	      (markup:raw
-	       (&format-log-entry-timestring
-		entry
-		:etc (&format-log-entry-subject
-		      entry
-		      :etc (&format-log-entry-content
-			    entry
-			    :etc (&format-log-entry-tags
-				  entry
-				  :etc
-				  (&format-log-entry-bottom-bar
+  (cond (etc
+	 (return-from format-log-entry
+	   (&do-etc (format-log-entry entry :etc nil) :etc etc)))
+	(t
+	 (markup:markup
+	  (:div :id (write-to-string (log-entry-timestamp entry)) :class "logentry"
+		(:dl :class "psaraweblog"
+		     (markup:raw
+		      (&format-log-entry-timestring
+		       entry
+		       :etc (&format-log-entry-subject
+			     entry
+			     :etc (&format-log-entry-content
 				   entry
-				   :etc nil))))))))))
+				   :etc (&format-log-entry-tags
+					 entry
+					 :etc
+					 (&format-log-entry-bottom-bar
+					  entry
+					  :etc nil))))))))))))

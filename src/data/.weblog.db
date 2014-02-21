@@ -1,4 +1,19 @@
 #S(CL-PSARA::LOG-ENTRY
+   :TIMESTAMP 3601933162
+   :SUBJECT "the (&do-etc) macro"
+   :AUTHOR "nydel"
+   :CONTENT "i've added this macro which works as follows:
+
+
+feed it one function that evaluates down to a string. you then have the option of feeding it another function that evaluates down to a string. it will return a form that evaluates to a concatenation of the strings.
+
+
+of course, the second function passed to (&do-etc) can be (&do-etc) itself, meaning that an unlimited number of functions may be evaluated and their strings concatenated into one single string for format output. this is useful for markup.
+
+
+ok short break then back to work!"
+   :TAGS ("do-etc" "macro"))
+#S(CL-PSARA::LOG-ENTRY
    :TIMESTAMP 3601848460
    :SUBJECT "phase four"
    :AUTHOR "nydel"

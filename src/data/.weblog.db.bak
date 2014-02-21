@@ -1,4 +1,29 @@
 #S(CL-PSARA::LOG-ENTRY
+   :TIMESTAMP 3601933162
+   :SUBJECT "the (&do-etc) macro"
+   :AUTHOR "nydel"
+   :CONTENT "i've added this macro which works as follows:
+
+
+feed it one function that evaluates down to a string. you then have the option of feeding it another function that evaluates down to a string. it will return a form that evaluates to a concatenation of the strings.
+
+of course, the second function passed to (&do-etc) can be (&do-etc) itself, meaning that an unlimited number of functions may be evaluated and their strings concatenated into one single string for format output. this is useful for markup.
+
+ok short break then back to work!"
+   :TAGS ("do-etc" "macro"))
+#S(CL-PSARA::LOG-ENTRY
+   :TIMESTAMP 3601848460
+   :SUBJECT "phase four"
+   :AUTHOR "nydel"
+   :CONTENT "it's time to begin #phase4 of development on the psara project. this will involve combing through the code thus written as the base module, which is weblog.lisp, along with all of its dependencies, which are made up of just about everything in the project's /src directory.
+
+there's a lot of work to be done keeping things clean. and i believe there should be a macro or two worthy of definition, perhaps even a class that is itself a psara widget. in fact, i may start just by trying a definition of a widget class inside the ps namespace, or ps::widget which i'll place in a new file. perhaps some of the files such as toolbar.lisp etc which are currently creating hunchentoot easy-handlers could be made into widget classes, simplifying the code and solidifying the psara project as a concept
+
+okay: round four begins now! let's add a now function, which prints the timestamp, you'll know it's successful when the following is not the phrase \"now\" enclosed in brackets, but rather the universal timestamp: [now].
+
+that'll be a good warmup, then it's off to the widget class definition."
+   :TAGS ("phase" "four" "psara" "dev" "widget" "now" "markup"))
+#S(CL-PSARA::LOG-ENTRY
    :TIMESTAMP 3601525146
    :SUBJECT "admin panel plan"
    :AUTHOR "nydel"
