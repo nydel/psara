@@ -1,4 +1,10 @@
 #S(CL-PSARA::LOG-ENTRY
+   :TIMESTAMP 3603686239
+   :SUBJECT "phase 5"
+   :AUTHOR "nydel"
+   :CONTENT "maybe a little late on starting this but it is time for #phase5 of development. since we did the last phase, we've been reading a lot of code for projects involving interesting use of stream/datagram sockets in common lisp, and lots of interesting usage of character macros, which can redefine aspects of the language at read-time and may be necessary for our ends. more soon."
+   :TAGS ("phase" "five" "macro" "tcp/ip" "sockets" "research"))
+#S(CL-PSARA::LOG-ENTRY
    :TIMESTAMP 3601933162
    :SUBJECT "the (&do-etc) macro"
    :AUTHOR "nydel"
