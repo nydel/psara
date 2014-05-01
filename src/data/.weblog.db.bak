@@ -1,4 +1,10 @@
 #S(CL-PSARA::LOG-ENTRY
+   :TIMESTAMP 3604100245
+   :SUBJECT "phase six of development"
+   :AUTHOR "nydel"
+   :CONTENT "the phases have gotten a bit blurred as we did testing off the primary localhost and on one of our mirrors. but we're going to call this the beginning of #phase6 development on the project. more details to come on what exactly that constitutes etcetera."
+   :TAGS ("phases" "phase6" "six" "dev" "psara" "local" "mirror"))
+#S(CL-PSARA::LOG-ENTRY
    :TIMESTAMP 3603686239
    :SUBJECT "phase 5"
    :AUTHOR "nydel"

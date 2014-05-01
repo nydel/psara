@@ -1,4 +1,10 @@
 #S(CL-PSARA::LOG-ENTRY
+   :TIMESTAMP 3607967840
+   :SUBJECT "i think i'm about ready to launch"
+   :AUTHOR "nydel"
+   :CONTENT "i just need to do some cleanup on a functional level. it's time to do something."
+   :TAGS ("launch" "psara" "soon"))
+#S(CL-PSARA::LOG-ENTRY
    :TIMESTAMP 3604100245
    :SUBJECT "phase six of development"
    :AUTHOR "nydel"
